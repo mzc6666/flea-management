@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { Navigate, useRoutes } from 'react-router-dom'
+import { Navigate, RouteObject, useRoutes } from 'react-router-dom'
 
 import Layouts from '../layouts/index'
 
@@ -13,7 +13,7 @@ import Error403 from '/@/page/error/403/index'
 import Error404 from '/@/page/error/404/index'
 import Login from '/@/page/login/index'
 
-const routers: RoutersProps[] = [
+const routers: RouteObject[] = [
     {
         path: '/',
         element: <Navigate to="login" />
@@ -62,8 +62,8 @@ function filterAsyncRouter(routes: RoutersProps[], routers: RoutersProps[]) {
     return routers
 }
 
-function useLazy(routes: RoutersProps[]) {
-    const tempRoutes: RoutersProps[] = []
+function useLazy(routes: RouteObject[]) {
+    const tempRoutes: RouteObject[] = []
     filterAsyncRouter(routes, tempRoutes)
     routers.push(...tempRoutes)
     routers.push({
