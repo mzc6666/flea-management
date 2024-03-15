@@ -15,22 +15,18 @@ class Request {
         const conf = OptimizedData(config)
         return new Promise((resolve, reject) => {
             this.instance
-                .request<any, AxiosResponse<Result>>(conf)
-                .then((res: AxiosResponse<Result>) => {
-                    if (ResponseSuccess) {
-                        const rep = ResponseSuccess(res)
-                        rep != 'error' ? resolve(rep) : reject(new Error('request error!'))
-                        return
+                .request<any, AxiosResponse<Result<T>>>(conf)
+                .then((res) => {
+                    const rep = ResponseSuccess(res)
+                    if (rep === 'error') {
+                        reject(new Error('request error!'))
+                    } else {
+                        resolve(rep)
                     }
-                    resolve(res as unknown as Promise<T>)
                 })
                 .catch((error: any) => {
-                    if (ResponseFailure) {
-                        const e: string = ResponseFailure(error)
-                        reject(e)
-                        return
-                    }
-                    reject(error)
+                    const e: string = ResponseFailure(error)
+                    reject(e)
                 })
         })
     }

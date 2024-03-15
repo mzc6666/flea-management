@@ -23,7 +23,7 @@ export interface Result<T = any> {
     type: 'success' | 'error' | 'warning'
     message: string
     msg?: string
-    data?: string
+    data?: T
     result: T
     size: T
     error: string

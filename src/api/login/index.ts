@@ -1,12 +1,8 @@
 import { defaultRequest } from '/@/utils/http/index'
+import { I_Login } from './type'
 
-interface loginState {
-    username: string
-    password: string
-}
-
-export function login(params: loginState) {
-    return defaultRequest.request({
+export function login(params: I_Login.Params) {
+    return defaultRequest.request<I_Login.ResponseData>({
         url: '/login',
         method: 'post',
         data: params

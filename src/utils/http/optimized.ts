@@ -84,11 +84,6 @@ export function ResponseFailure(e: any) {
 }
 
 const filterNullParams = (params: any) => {
-    Object.keys(params).filter(
-        (key) =>
-            (params[key] === '' || params[key] === undefined || params[key] === null) &&
-            delete params[key]
-    )
-
+    Object.keys(params).filter((key) => [undefined, null].includes(params[key]) && (delete params[key]))
     return params
 }
