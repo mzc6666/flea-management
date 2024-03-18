@@ -33,32 +33,22 @@ const AvatarIcon = ({ clearInfo }: any) => {
         }
     }
 
-    // Dropdown Menu
     const items: MenuProps['items'] = [
-        // {
-        //     key: '1',
-        //     label: '个人信息'
-        // },
-        // {
-        //     type: 'divider'
-        // },
         {
             key: '2',
             label: '退出系统'
         }
     ]
     return (
-        <>
-            <Dropdown
-                className="cursor-pointer"
-                menu={{ items, onClick }}
-                placement="bottom"
-                arrow
-                trigger={['click']}
-            >
-                <Avatar size="large" src={avatar} />
-            </Dropdown>
-        </>
+        <Dropdown
+            className="cursor-pointer"
+            menu={{ items, onClick }}
+            placement="bottom"
+            arrow
+            trigger={['click']}
+        >
+            <Avatar size="large" src={avatar} />
+        </Dropdown>
     )
 }
 

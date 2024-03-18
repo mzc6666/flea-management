@@ -1,7 +1,7 @@
 import { GithubOutlined } from '@ant-design/icons'
 const GitHub = () => {
     const jump = () => {
-        window.open('https://github.com/haojiey/react-mu-admin')
+        window.open('https://github.com/mzc6666/flea-management')
     }
     return (
         <GithubOutlined

@@ -11,6 +11,9 @@ const menuState: MenuState = {
 // menu reducer
 const menu = (state: MenuState = menuState, action: AnyAction) =>
     produce(state, (draftState) => {
+        if (action.type === types.SET_MENU_LIST) {
+            console.trace("menus", action.menuList);
+        }
         switch (action.type) {
             case types.UPDATE_COLLAPSE:
                 draftState.isCollapse = action.isCollapse
